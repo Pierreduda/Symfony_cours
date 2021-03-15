@@ -1,0 +1,21 @@
+{# extends : signifie que le fichier actuel hérite du ficier base.html.twig #}
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <p>Bonjour, {{ prenom }} !</p>
+{% endblock body %}
+
+{% block title %} Salutations ! {% endblock %}
+
+{% block invisible %}
+    <p>Le contenu de ce block ne sera pas affiché parce qu'il n'existe pas dans base.html.twig mais il n'y aura pas d'erreur.</p>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }} {# parent() renvoi le reste du bloc de la vue parente #}
+    <style>
+        p{
+            color:red;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<h2>Détails livre n°{{livre.id}}</h2>
+<ul class="list-group">
+		<li class="list-group item">
+			<strong>Titre :
+			</strong>
+			{{livre.titre}}
+		</li>
+		<li class="list-group item">
+			<strong>Auteur :
+			</strong>
+			{{livre.auteur}}
+		</li>
+	</ul>
+	<div class="row mt-3">
+		<a href="{{path('livre')}}" class="btn btn-info">Retour</a>
+	</div>
+{% endblock %}

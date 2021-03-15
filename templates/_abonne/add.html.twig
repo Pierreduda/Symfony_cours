@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+{{ form(formAbonne) }}
+
+<a href="{{ path("abonne")}}" class="btn btn-danger">Annuler</a>
+
+{% endblock %}

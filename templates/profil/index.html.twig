@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Profil
+{% endblock %}
+
+{% block body %}
+
+	<ul class="list-group">
+		<li class="list-group-item">
+			<strong>ID :
+			</strong>
+			{{app.user.id}}
+		</li>
+		<li class="list-group-item">
+			<strong>Pseudo :
+			</strong>
+			{{app.user.pseudo}}
+		</li>
+		<li class="list-group-item">
+			<strong>Nom :
+			</strong>
+			{{app.user.nom}}
+		</li>
+		<li class="list-group-item">
+			<strong>Prénom :
+			</strong>
+			{{app.user.prenom}}
+		</li>
+		<li class="list-group-item">
+			<strong>Statut :
+			</strong>
+			{% for role in app.user.roles %}
+				{% if role == "ROLE_ADMIN" %}
+					Administrateur
+				{% elseif role == "ROLE_BIBLIOTHECAIRE" %}
+					Bibliothécaire
+				{% elseif role == "ROLE_ABONNE" %}
+					Abonné
+				{% else %}
+					Lecteur
+				{% endif %}
+			{% endfor %}
+		</li>
+	</ul>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Livre</th>
+				<th>Emprunté le : </th>
+				<th>Retourné le : </th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for emprunt in app.user.emprunts %}
+				<tr>
+					<td>{{emprunt.livre.titre ~ " - " ~ emprunt.livre.auteur }}</td>
+					<td>{{emprunt.dateEmprunt|date("d/m/y")}}</td>
+					<td>{{emprunt.dateRetour ? emprunt.dateRetour|date("d/m/y") : "à rendre"}}</td>	
+				{% endfor %}
+				</tr>
+			</tbody>
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil
+{% endblock %}
+
+{% block body %}
+	{# EXO affichez la liste des livres sous forme de 'cards' dans la page d'accueil #}
+	<div class="card-columns">
+		{% for livre in liste_livre %}
+			{% include "livre/vignette.html.twig" with {l : livre} %}
+		{% endfor %}
+	</div>
+{% endblock %}

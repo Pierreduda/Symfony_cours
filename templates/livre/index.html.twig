@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des livres
+{% endblock %}
+
+{% block body %}
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<th>ID</th>
+			<th>Titre</th>
+			<th>Auteur</th>
+			<th>Disponibilité</th>
+			<th>Actions</th>
+		</thead>
+		<tbody>
+			{% for livre in liste_livre %}
+				<tr>
+					<td>{{ livre.id }}</td>
+					<td>{{ livre.titre }}</td>
+					<td>{{ livre.auteur }}</td>
+					<td>{{ livre in livres_indisponibles ? "Non" : "Oui" }}</td>
+					<td><a href="{{ path("livre_update", {id: livre.id})}}"><i class="far fa-edit"></i> </a>
+					<a href="{{ path("livre_delete", {id: livre.id})}}"><i class="fas fa-trash"></i> </a>
+					<a href="{{ path("livre_detail", {id: livre.id})}}"><i class="fas fa-file-alt"></i></a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

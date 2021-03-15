@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Recherche
+{% endblock %}
+
+{% block body %}
+	{# EXO affichez la liste des livres sous forme de 'cards' dans la page d'accueil #}
+    <h2>Résultat de la recherche : "{{search}}"</h2> 
+	<div class="card-columns">
+		{% for livre in liste_livre %}
+			{% include "livre/vignette.html.twig" with {l : livre} %}
+		{% endfor %}
+	</div>
+{% endblock %}
